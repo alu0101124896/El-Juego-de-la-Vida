@@ -1,0 +1,24 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "g++",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-g",
+        "src/cell.cpp",
+        "src/board.cpp",
+        "src/main.cpp",
+        "-o",
+        "build/game_of_life"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
