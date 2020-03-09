@@ -11,7 +11,7 @@ class Board {
  private:
   int n, m;  // Dimentions of board
   int population;
-  std::vector<std::vector<Cell>> grid;
+  std::vector<std::vector<Cell *>> grid;
 
  public:
   Board();
@@ -20,8 +20,8 @@ class Board {
   int get_n() const;
   int get_m() const;
   int get_population() const;
-  Cell &get_cell(int i, int j);
-  Cell get_cell(int i, int j) const;
+  Cell *get_cell(int i, int j);
+  Cell *get_cell(int i, int j) const;
 
   void increment_population();
   void decrement_population();

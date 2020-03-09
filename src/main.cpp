@@ -5,6 +5,9 @@
 #include <iostream>
 #include <thread>
 
+// 146x633 - Desktop Arch Linux
+// 34x54 - Note 8T Android
+
 int main() {
   int n, m, t, c, i, j;
 
@@ -27,12 +30,11 @@ int main() {
     std::cout << "j: ";
     std::cin >> j;
 
-    board.get_cell(i, j).set_alive(true);
+    board.get_cell(i, j)->set_alive(true);
     board.increment_population();
     board.print();
   }
 
-  // bash+f11+max_zoom_out+146x633
   // for (int j = (m / 2) - 128; j < (m / 2) + 128; j++) {
   //   board.get_cell(n / 2, j).set_alive(true);
   //   board.increment_population();
@@ -41,12 +43,12 @@ int main() {
   for (int k = 1; k <= t; k++) {
     for (int i = 1; i <= n; i++) {
       for (int j = 1; j <= m; j++) {
-        board.get_cell(i, j).count_alive_neighbours(board);
+        board.get_cell(i, j)->count_alive_neighbours(board);
       }
     }
     for (int i = 1; i <= n; i++) {
       for (int j = 1; j <= m; j++) {
-        board.get_cell(i, j).update_state(board);
+        board.get_cell(i, j)->update_state(board);
       }
     }
     board.print();

@@ -23,28 +23,28 @@ void Cell::set_alive(bool _alive) { alive = _alive; }
 
 void Cell::count_alive_neighbours(const Board& board) {
   alive_neighbours = 0;
-  if (board.get_cell(i - 1, j - 1).is_alive()) {
+  if (board.get_cell(i - 1, j - 1)->is_alive()) {
     alive_neighbours++;
   }
-  if (board.get_cell(i - 1, j).is_alive()) {
+  if (board.get_cell(i - 1, j)->is_alive()) {
     alive_neighbours++;
   }
-  if (board.get_cell(i - 1, j + 1).is_alive()) {
+  if (board.get_cell(i - 1, j + 1)->is_alive()) {
     alive_neighbours++;
   }
-  if (board.get_cell(i, j - 1).is_alive()) {
+  if (board.get_cell(i, j - 1)->is_alive()) {
     alive_neighbours++;
   }
-  if (board.get_cell(i, j + 1).is_alive()) {
+  if (board.get_cell(i, j + 1)->is_alive()) {
     alive_neighbours++;
   }
-  if (board.get_cell(i + 1, j - 1).is_alive()) {
+  if (board.get_cell(i + 1, j - 1)->is_alive()) {
     alive_neighbours++;
   }
-  if (board.get_cell(i + 1, j).is_alive()) {
+  if (board.get_cell(i + 1, j)->is_alive()) {
     alive_neighbours++;
   }
-  if (board.get_cell(i + 1, j + 1).is_alive()) {
+  if (board.get_cell(i + 1, j + 1)->is_alive()) {
     alive_neighbours++;
   }
 }
@@ -59,11 +59,11 @@ void Cell::update_state(Board& board) {
   }
 }
 
-std::ostream& operator<<(std::ostream& os, const Cell& cell) {
+std::ostream& operator<<(std::ostream& os, const Cell &cell) {
   if (cell.is_alive()) {
     os << "█";
   } else {
-    os << " ";
+    os << "·";
   }
   return os;
 }
