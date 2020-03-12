@@ -22,6 +22,7 @@ class Board {
   int get_population() const;
   Cell *get_cell(int i, int j);
   Cell *get_cell(int i, int j) const;
+  int get_cells_has_not_been_alive() const;
 
   void increment_population();
   void decrement_population();

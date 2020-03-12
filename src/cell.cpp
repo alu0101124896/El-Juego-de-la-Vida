@@ -13,13 +13,20 @@ Cell::Cell(int _i, int _j, bool _alive) {
 
 bool Cell::is_alive() const { return alive; }
 
+bool Cell::get_has_been_alive() const { return has_been_alive; }
+
 int Cell::get_i() const { return i; }
 
 int Cell::get_j() const { return j; }
 
 int Cell::get_alive_neighbours() const { return alive_neighbours; }
 
-void Cell::set_alive(bool _alive) { alive = _alive; }
+void Cell::set_alive(bool _alive) { 
+  alive = _alive;
+  if (alive) {
+    has_been_alive = true;
+  }
+}
 
 void Cell::count_alive_neighbours(const Board& board) {
   alive_neighbours = 0;
@@ -51,10 +58,10 @@ void Cell::count_alive_neighbours(const Board& board) {
 
 void Cell::update_state(Board& board) {
   if (alive && alive_neighbours != 3 && alive_neighbours != 2) {
-    alive = false;
+    set_alive(false);
     board.decrement_population();
   } else if (!alive && alive_neighbours == 3) {
-    alive = true;
+    set_alive(true);
     board.increment_population();
   }
 }

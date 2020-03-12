@@ -21,24 +21,24 @@ int main() {
 
   Board board(n, m);
 
-  std::cout << "Numero de celulas madre: ";
-  std::cin >> c;
-  for (int k = 0; k < c; k++) {
-    std::cout << "Posicion de la celula madre numero " << k + 1 << ":\n";
-    std::cout << "i: ";
-    std::cin >> i;
-    std::cout << "j: ";
-    std::cin >> j;
+  // std::cout << "Numero de celulas madre: ";
+  // std::cin >> c;
+  // for (int k = 0; k < c; k++) {
+  //   std::cout << "Posicion de la celula madre numero " << k + 1 << ":\n";
+  //   std::cout << "i: ";
+  //   std::cin >> i;
+  //   std::cout << "j: ";
+  //   std::cin >> j;
 
-    board.get_cell(i, j)->set_alive(true);
-    board.increment_population();
-    board.print();
-  }
-
-  // for (int j = (m / 2) - 128; j < (m / 2) + 128; j++) {
-  //   board.get_cell(n / 2, j).set_alive(true);
+  //   board.get_cell(i, j)->set_alive(true);
   //   board.increment_population();
+  //   board.print();
   // }
+
+  for (int j = (m / 2) - 64; j < (m / 2) + 64; j++) {
+    board.get_cell(n / 2, j)->set_alive(true);
+    board.increment_population();
+  }
 
   for (int k = 1; k <= t; k++) {
     for (int i = 1; i <= n; i++) {
@@ -52,8 +52,10 @@ int main() {
       }
     }
     board.print();
-    std::cout << "Iteracion " << k << ".\t Poblacion " << board.get_population()
-              << ".\n";
+    std::cout << "Iteracion: " << k << "\t Poblacion: " << board.get_population()
+              << "\n";
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
   }
+  std::cout << "Celulas que han permanecido muertas: " 
+            << board.get_cells_has_not_been_alive() << "\n";
 }

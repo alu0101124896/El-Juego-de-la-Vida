@@ -29,6 +29,19 @@ Cell *Board::get_cell(int i, int j) { return grid.at(i).at(j); }
 
 Cell *Board::get_cell(int i, int j) const { return grid.at(i).at(j); }
 
+int Board::get_cells_has_not_been_alive() const {
+  int cells = n * m;
+  for (int i = 1; i <= n; i++) {
+    for (int j = 1; j <= m; j++) {
+      if (grid.at(i).at(j)->get_has_been_alive())
+      {
+        cells--;
+      }
+    }
+  }
+  return cells;
+}
+
 void Board::increment_population() { population++; }
 
 void Board::decrement_population() { population--; }

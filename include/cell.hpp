@@ -8,7 +8,7 @@ class Board;
 
 class Cell {
  private:
-  bool alive;
+  bool alive, has_been_alive;
   int i, j;  // Position on board
   int alive_neighbours;
 
@@ -17,6 +17,7 @@ class Cell {
   Cell(int _i, int _j, bool _alive = false);
 
   bool is_alive() const;
+  bool get_has_been_alive() const;
   int get_i() const;
   int get_j() const;
   int get_alive_neighbours() const;
